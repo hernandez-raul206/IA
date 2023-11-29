@@ -1,0 +1,35 @@
+package hansome_8;
+
+public class simple_linear_regression {
+
+	public simple_linear_regression(int x[], int y[]) {
+		data_set date = new data_set();
+		
+		System.out.print("en esta parte sacare la media\n");
+		double mediax=0;
+		double mediay=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			mediax+=date.x[i];
+			mediay+=date.y[i];
+		}//end for
+		mediax=mediax/date.x.length;
+		mediay=mediay/date.y.length;
+		int mediax2= (int) Math.floor(mediax);
+		int mediay2= (int) Math.floor(mediay);
+		
+		System.out.print("media de x: "+mediax2);
+		System.out.print("\n");
+		System.out.print("media de y: "+mediay2);
+		System.out.print("\n");
+		System.out.print("Hora en essta parte sacare los productos y cuadrados\n");
+		double productos=0, cuadrados=0;
+		for(int i=0;i<=date.x.length-1;i++){
+			productos+= date.x[i]-mediax2 * date.y[i]-mediay2;
+			cuadrados+= Math.pow((date.x[i]-mediax2),2);
+		}//end for
+		
+		System.out.print("productos: "+productos);
+		System.out.print("\n");
+		System.out.print("cuadrados: "+cuadrados);
+	}//end simple_linear_regression
+}//end class simple_linear_regression

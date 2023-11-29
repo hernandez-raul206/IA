@@ -1,0 +1,20 @@
+package hansome_8;
+
+public class simple_linear_regression {
+
+	public simple_linear_regression(int x[], int y[]) {
+		data_set date = new data_set();
+		
+		System.out.print("en esta parte sacare la media\n");
+		double mediax=0;
+		double mediay=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			mediax+=date.x[i];
+			mediay+=date.y[i];
+		}//end for
+		mediax=mediax/date.x.length;
+		mediay=mediay/date.y.length;
+		System.out.print("media de x: "+mediax);
+		System.out.print("media de y: "+mediay);
+	}//end simple_linear_regression
+}//end class simple_linear_regression
