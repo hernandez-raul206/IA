@@ -1,0 +1,36 @@
+package hansd_on_10;
+
+public class Polynomial_quadratic_Regression {
+
+	Polynomial_quadratic_Regression(double x[],double y[]){
+		date_set date = new date_set();
+		
+		//calculo de medias y un cuadrado
+	
+		double mediax=0,mediay=0,mediacx=0,mediaxy=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			mediax+=date.x[i]/date.x.length;
+			mediay+=date.y[i]/date.y.length;
+			mediacx+=Math.pow(date.x[i],2)/date.x.length;
+			mediaxy+=date.x[i]*date.y[i]/date.x.length;
+		}//end for
+		
+		//Calculo betas
+		double B0=0,B1=0,B2=0;
+		B2=(mediaxy-(mediax*mediay))/(mediacx-Math.pow(mediax, 2));
+		B1=mediay-(B2*mediax);
+		B0=mediay-(B2*Math.pow(mediax, 2))-(B1*mediax);
+		
+		System.out.println("B0: "+B0);
+		System.out.println("B1: "+B1);
+		System.out.println("B2: "+B2);
+	
+		double[] predicciones = new double [date.x.length];
+		for(int i=0;i<=date.x.length-1;i++) {
+			predicciones[i]= B0+(B1*date.x[i])+(B2*Math.pow(date.x[i],2));
+			System.out.println("Prediccones "+(i+1)+": "+predicciones[i]);
+		}
+	
+	}//end Polynomial_quadratic_Regression
+	
+}//end class Polynomial_quadratic_Regression

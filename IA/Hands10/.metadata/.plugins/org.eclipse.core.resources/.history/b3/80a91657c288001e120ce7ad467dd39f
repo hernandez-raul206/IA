@@ -1,0 +1,13 @@
+package hansd_on_10;
+
+public class Main {
+	static double x[]= {};
+	static double y[]= {};
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Polynomial_Linear_Regression test = new Polynomial_Linear_Regression(x,y);
+	}
+
+}

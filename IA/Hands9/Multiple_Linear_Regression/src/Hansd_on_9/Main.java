@@ -1,0 +1,13 @@
+package Hansd_on_9;
+
+public class Main {
+
+	static double x[][] = {};
+	static double y[] = {};
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Multiple_Linear_Regressiontest test1 = new Multiple_Linear_Regressiontest(x, y);
+	}
+
+}

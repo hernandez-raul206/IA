@@ -1,0 +1,37 @@
+package Hansd_on_9;
+
+public class Multiple_Linear_Regressiontest {
+
+	public Multiple_Linear_Regressiontest(double x[][], double y[]) {
+		
+		Data_Set date = new Data_Set();
+		
+		double mediax1 = 0;
+
+		for (int i = 0; i < date.y.length-1; i++) {
+			mediax1 += date.x[i][0];
+	    }//end for
+	    mediax1 /= date.y.length;
+	    
+	    double mediax2 = 0;
+
+        for (int i = 0; i < date.y.length-1; i++) {
+            mediax2 += date.x[i][1];
+        }
+        mediax2 /= date.y.length;
+        
+        double mediay = 0;
+
+        for (int i = 0; i < date.y.length-1; i++) {
+            mediay += date.y[i];
+        }
+        mediay /= date.y.length;
+        
+        System.out.println("Media de X1: "+mediax1);
+        System.out.println("Media de X2: "+mediax2);
+        System.out.println("Media de Y: "+mediay);
+
+		
+	}//end Multiple_Linear_Regression
+	
+}

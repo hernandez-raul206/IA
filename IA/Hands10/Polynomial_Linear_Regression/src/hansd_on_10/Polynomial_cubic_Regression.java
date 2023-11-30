@@ -1,0 +1,104 @@
+package hansd_on_10;
+
+public class Polynomial_cubic_Regression {
+	Polynomial_cubic_Regression(double x[],double y[]){
+		System.out.println("-----Polynomial_cubic_Regression-----");
+		
+		date_set date=new date_set();
+		//calcular sumatorias
+		double sumax=0,sumay=0,sumax2=0,sumax3=0,sumax4=0,sumax5=0,sumax6=0,sumaxy=0, sumax2y=0,sumax3y=0,mediay=0;
+		
+		for(int i=0;i<=date.x.length-1;i++){
+			sumax+=date.x[i];
+			sumay+=date.y[i];
+			sumax2+=Math.pow(date.x[i], 2);
+			sumax3+=Math.pow(date.x[i], 3);
+			sumax4+=Math.pow(date.x[i], 4);
+			sumax5+=Math.pow(date.x[i], 5);
+			sumax6+=Math.pow(date.x[i], 6);
+			sumaxy+=date.x[i]*date.y[i];
+			sumax2y+=Math.pow(date.x[i], 2)*date.y[i];
+			sumax3y+=Math.pow(date.x[i], 3)*date.y[i];
+		}//end for
+		mediay=sumay/date.y.length;
+		
+		//calculo de betas
+		
+		double determinante=0,B0=0,B1=0,B2=0,B3=0;
+		determinante=(sumax3*sumax3*sumax3*sumax3)-(sumax3*sumax3*sumax2*sumax4)-(sumax3*sumax2*sumax4*sumax3)+
+                	(sumax3*sumax2*sumax2*sumax5)+(sumax3*sumax*sumax4*sumax4)-(sumax3*sumax*sumax3*sumax5)-
+                	(sumax2*sumax4*sumax3*sumax3)+(sumax2*sumax4*sumax2*sumax4)+(sumax2*sumax2*sumax5*sumax3)-
+                	(sumax2*sumax2*sumax2*sumax6)-(sumax2*sumax*sumax5*sumax4)+(sumax2*sumax*sumax3*sumax6)+
+                	(sumax*sumax4*sumax4*sumax3)-(sumax*sumax4*sumax2*sumax5)-(sumax*sumax3*sumax5*sumax3)+
+                	(sumax*sumax3*sumax2*sumax6)+(sumax*sumax*sumax5*sumax5)-(sumax*sumax*sumax4*sumax6)-
+                	(date.x.length*sumax4*sumax4*sumax4)+(date.x.length*sumax4*sumax3*sumax5)+(date.x.length*sumax3*sumax5*sumax4)-
+                	(date.x.length*sumax3*sumax3*sumax6)-(date.x.length*sumax2*sumax5*sumax5)+(date.x.length*sumax2*sumax4*sumax6);
+		
+		B3=(sumay*sumax3*sumax3*sumax3)-(sumay*sumax3*sumax2*sumax4)-(sumay*sumax2*sumax4*sumax3)+
+           (sumay*sumax2*sumax2*sumax5)+(sumay*sumax*sumax4*sumax4)-(sumay*sumax*sumax3*sumax5)-
+           (sumax2*sumaxy*sumax3*sumax3)+(sumax2*sumaxy*sumax2*sumax4)+(sumax2*sumax2*sumax2y*sumax3)-
+           (sumax2*sumax2*sumax2*sumax3y)-(sumax2*sumax*sumax2y*sumax4)+(sumax2*sumax*sumax3*sumax3y)+
+           (sumax*sumaxy*sumax4*sumax3)-(sumax*sumaxy*sumax2*sumax5)-(sumax*sumax3*sumax2y*sumax3)+
+           (sumax*sumax3*sumax2*sumax3y)+(sumax*sumax*sumax2y*sumax5)-(sumax*sumax*sumax4*sumax3y)-
+           (date.x.length*sumaxy*sumax4*sumax4)+(date.x.length*sumaxy*sumax3*sumax5)+(date.x.length*sumax3*sumax2y*sumax4)-
+           (date.x.length*sumax3*sumax3*sumax3y)-(date.x.length*sumax2*sumax2y*sumax5)+(date.x.length*sumax2*sumax4*sumax3y);
+		
+		B2=(sumax3*sumaxy*sumax3*sumax3)-(sumax3*sumaxy*sumax4*sumax2)-(sumax3*sumax2*sumax2y*sumax3)+
+           (sumax3*sumax2*sumax2*sumax3y)+(sumax3*sumax*sumax2y*sumax4)-(sumax3*sumax*sumax3*sumax3y)-
+           (sumay*sumax4*sumax3*sumax3)+(sumay*sumax4*sumax2*sumax4)+(sumay*sumax2*sumax5*sumax3)-
+           (sumay*sumax2*sumax2*sumax6)-(sumay*sumax*sumax5*sumax4)+(sumay*sumax*sumax3*sumax6)+
+           (sumax*sumax4*sumax2y*sumax3)-(sumax*sumax4*sumax2*sumax3y)-(sumax*sumaxy*sumax5*sumax3)+
+           (sumax*sumaxy*sumax6*sumax2)+(sumax*sumax*sumax5*sumax3y)-(sumax*sumax*sumax2y*sumax6)-
+           (date.x.length*sumax4*sumax2y*sumax4)+(date.x.length*sumax4*sumax3*sumax3y)+(date.x.length*sumaxy*sumax5*sumax4)-
+           (date.x.length*sumaxy*sumax3*sumax6)-(date.x.length*sumax2*sumax5*sumax3y)+(date.x.length*sumax2*sumax2y*sumax6);
+		
+		B1=(sumax3*sumax3*sumax2y*sumax3)-(sumax3*sumax3*sumax3y*sumax2)-(sumax3*sumaxy*sumax4*sumax3)+
+           (sumax3*sumaxy*sumax2*sumax5)+(sumax3*sumax*sumax4*sumax3y)-(sumax3*sumax*sumax2y*sumax5)-
+           (sumax2*sumax4*sumax2y*sumax3)+(sumax2*sumax4*sumax2*sumax3y)+(sumax2*sumaxy*sumax5*sumax3)-
+           (sumax2*sumaxy*sumax2*sumax6)-(sumax2*sumax*sumax5*sumax3y)+(sumax2*sumax*sumax2y*sumax6)+
+           (sumay*sumax4*sumax4*sumax3)-(sumay*sumax4*sumax2*sumax5)-(sumay*sumax3*sumax5*sumax3)+
+           (sumay*sumax3*sumax2*sumax6)+(sumay*sumax*sumax5*sumax5)-(sumay*sumax*sumax4*sumax6)-
+           (date.x.length*sumax4*sumax4*sumax3y)+(date.x.length*sumax4*sumax2y*sumax5)+(date.x.length*sumax3*sumax5*sumax3y)-
+           (date.x.length*sumax3*sumax2y*sumax6)-(date.x.length*sumaxy*sumax5*sumax5)+(date.x.length*sumaxy*sumax4*sumax6);
+		
+		B0=(sumax3*sumax3*sumax3*sumax3y)-(sumax3*sumax3*sumax2y*sumax4)-(sumax3*sumax2*sumax4*sumax3y)+
+           (sumax3*sumax2*sumax2y*sumax5)+(sumax3*sumaxy*sumax4*sumax4)-(sumax3*sumaxy*sumax3*sumax5)-
+           (sumax2*sumax4*sumax3*sumax3y)+(sumax2*sumax4*sumax2y*sumax4)+(sumax2*sumax2*sumax5*sumax3y)-
+           (sumax2*sumax2*sumax2y*sumax6)-(sumax2*sumaxy*sumax5*sumax4)+(sumax2*sumaxy*sumax3*sumax6)+
+           (sumax*sumax4*sumax4*sumax3y)-(sumax*sumax4*sumax2y*sumax5)-(sumax*sumax3*sumax5*sumax3y)+
+           (sumax*sumax3*sumax2y*sumax6)+(sumax*sumaxy*sumax5*sumax5)-(sumax*sumaxy*sumax4*sumax6)-
+           (sumay*sumax4*sumax4*sumax4)+(sumay*sumax4*sumax3*sumax5)+(sumay*sumax3*sumax5*sumax4)-
+           (sumay*sumax3*sumax3*sumax6)-(sumay*sumax2*sumax5*sumax5)+(sumay*sumax2*sumax4*sumax6);
+		
+		B3/=determinante;
+		B2/=determinante;
+		B1/=determinante;
+		B0/=determinante;
+		
+		System.out.println("B0: " +B0);
+        System.out.println("B1: " +B1);
+        System.out.println("B2: " +B2);
+        System.out.println("B3: " +B3);
+        
+        double[] predicciones = new double[date.x.length];
+        
+        for (int i=0;i<=date.x.length-1;i++) {
+        	predicciones[i] = B0+(B1*date.x[i])+ (B2*(Math.pow(date.x[i], 2)))+ (B3*(Math.pow(date.x[i], 3)));
+        	//System.out.println("Prediccion "+(i + 1) + ": " + predicciones[i]);
+        }//end for
+        
+        //calculo de R2
+        double	tsc=0,scr=0, R2=0;
+        for (int i=0;i<=date.x.length-1;i++) {
+        	tsc+=Math.pow((date.y[i] - mediay), 2);
+        	scr+=Math.pow((date.y[i] - predicciones[i]), 2);
+        }//end for
+        
+        R2=1-(scr/tsc);
+        System.out.println("R2: "+R2);
+        System.out.println("Formula de prediccion: B0+B1X+B2X2+B3X3");
+		double test=0,X=120;//Cambiar la X para las predicciones
+		test=B0+(B1*X)+ (B2*Math.pow(X, 2))+ (B3*Math.pow(X, 3));
+		System.out.println("La Prediccion usando "+X+" es: "+test);
+	}//end Polynomial_cubic_Regression
+}//end class Polynomial_cubic_Regression

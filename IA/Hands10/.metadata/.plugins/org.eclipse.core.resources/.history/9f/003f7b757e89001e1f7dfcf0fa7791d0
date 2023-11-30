@@ -1,0 +1,7 @@
+package hansd_on_10;
+
+public class Polynomial_cubic_Regression {
+	Polynomial_cubic_Regression(double x[],double y[]){
+		System.out.println("-----Polynomial_cubic_Regression-----");
+	}//end Polynomial_cubic_Regression
+}//end class Polynomial_cubic_Regression

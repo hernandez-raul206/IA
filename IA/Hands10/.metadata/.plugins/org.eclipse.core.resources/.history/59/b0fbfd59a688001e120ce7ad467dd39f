@@ -1,0 +1,29 @@
+package hansd_on_10;
+
+public class Polynomial_Linear_Regression {
+	Polynomial_Linear_Regression(double x[] , double y[]) {
+		date_set date = new date_set();
+		
+		double B0 =0, B1=0, sx=0, sy=0, sxy=0, scx=0;
+		
+		for(int i=0;i<=date.x.length-1;i++) {
+			sxy+=date.x[i]*date.y[i];
+			sx+=date.x[i];
+			sy+=date.y[i];
+			scx+=Math.pow(date.x[i],2);
+				
+		}//end for
+		B1=(date.x.length*sxy)-(sx*sy) / (date.x.length*scx)-Math.pow(sx,2);
+		B0=sy-(B1*sx)/date.x.length;
+		
+		
+		
+		double[] predicciones = new double[date.x.length];
+		
+		for(int i=0;i<=date.x.length-1;i++) {
+			predicciones[i]=B0+(B1*date.x[i]);
+			System.out.println("prediccion "+(i+1)+" : "+predicciones[i]);
+		}//end for
+	}//end Polynomial_Linear_Regression
+
+}//end class Polynomial_Linear_Regression

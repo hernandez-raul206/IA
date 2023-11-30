@@ -1,0 +1,75 @@
+package Hansd_on_9;
+
+public class Multiple_Linear_Regression {
+
+	public Multiple_Linear_Regression(double x[][], double y[]) {
+		
+		Data_Set date = new Data_Set();
+		
+		
+		//calculo de medias
+		double mediasx= 0, mediay = 0;
+		for(int i=0;i<=date.y.length-1;i++) {
+			double suma = 0;
+			mediay += date.y[i]/date.y.length;
+			for(int j=0;j<=1;j++) {
+				suma += date.x[i][i]/date.x.length;
+			}//end for
+		}//end for
+		
+		for(int i=0;i<=1;i++) {
+			double suma = 0;
+			for(int j=0;j<=date.y.length-1;j++) {
+				suma += date.x[i][j]/date.x.length;
+			}//end for
+			
+		}//end for
+		
+		System.out.print("La Media de Y es: "+mediay+"\n");
+		System.out.print("La Media de X es: "+mediax+"\n");
+		
+		//calculo de covarianza y varianza
+		double covarianza = 0, covarianza2 = 0,covarianza3 = 0, varianza = 0;
+		
+		for(int i=0;i<=date.y.length-1;i++) {
+			covarianza2 += (date.y[i]-mediay);
+			for(int j=0;j<=1;j++) {
+				covarianza3 += (date.x[i][j]-mediax);
+				varianza += Math.pow((date.x[i][j]-mediax),2)/date.x.length;
+			}//end for
+			
+		}//end for
+		covarianza+=covarianza2*covarianza3/date.y.length;
+		//covarianza=covarianza2*covarianza3/date.x.length;
+		System.out.print("La covarianza es: "+covarianza+"\n");
+		System.out.print("La varianza es: "+varianza+"\n");
+		
+		//calcular los Coeficientes de la Recta de Regresión
+		double Bj = 0, B0 = 0;//bj = b1,b2,b3...bn
+		
+		Bj = covarianza/varianza;
+		B0 = mediay - (Bj*mediax);
+		
+		System.out.print("B0: "+B0+"\n");
+		System.out.print("Bj: "+Bj+"\n");
+		
+		//Obtener la Ecuación de Regresión
+		System.out.print("Y=B0+B1X1+B2X2..BnXn -> Y=B0+BJX1+BJX2\n");
+		double prediccion = 0;
+		//prediccion = B0+(Bj*80.5)+(Bj*35.2);//PREDICCION
+		prediccion = B0+(Bj*(80.5+35.2));//PREDICCION
+		System.out.print("Prediccion : "+prediccion+"\n");
+		
+		//Calculo de R2
+		double powx = 0, powy = 0, R2=0;
+		for(int i=0;i<=date.y.length-1;i++) {
+			powy+= Math.pow((date.y[i]-mediay),2);
+			for(int j=0;j<=1;j++) {
+				powx+= Math.pow((date.x[i][j]-mediax),2);
+			}//end for
+		}//end for
+		R2= covarianza/(Math.sqrt(powx)*(Math.sqrt(powy)));
+		R2=Math.pow(R2,2);
+		System.out.print("R2: "+R2+"\n");
+	}//end Multiple_Linear_Regression
+}// end class Multiple_Linear_Regression

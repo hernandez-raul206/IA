@@ -1,0 +1,22 @@
+package hansd_on_10;
+
+public class Polynomial_quadratic_Regression {
+
+	Polynomial_quadratic_Regression(double x[],double y[]){
+		date_set date = new date_set();
+		
+		//calculo de medias
+	
+		double mediax=0,mediay=0,mediacx=0,mediaxy=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			mediax+=date.x[i]/date.x.length;
+			mediay+=date.y[i]/date.y.length;
+			mediacx+=Math.pow(date.x[i],2)/date.x.length;
+			mediaxy+=date.x[i]*date.y[i]/date.x.length;
+		}//end for
+		
+	
+	
+	}//end Polynomial_quadratic_Regression
+	
+}//end class Polynomial_quadratic_Regression

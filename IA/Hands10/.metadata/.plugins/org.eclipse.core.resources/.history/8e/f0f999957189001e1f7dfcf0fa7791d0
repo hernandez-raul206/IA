@@ -1,0 +1,31 @@
+package hansd_on_10;
+
+public class Polynomial_quadratic_Regression {
+
+	Polynomial_quadratic_Regression(double x[],double y[]){
+		date_set date = new date_set();
+		
+		//calculo de sumas
+	
+		double sumax=0,sumay=0,sumax2=0,sumax3=0,sumax4=0,sumaxy=0, sumax2y=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			sumax+=date.x[i];
+			sumay+=date.y[i];
+			sumax2+=date.x[i]*date.x[i];
+			sumax3+=sumax2*date.x[i];
+			sumax4+=sumax2*sumax2;
+			sumaxy+=date.x[i]*date.y[i];
+			sumax2y+=sumax2*date.y[i];
+			
+		}//end for
+		System.out.println("sumax: "+sumax);
+		System.out.println("sumay: "+sumay);
+		System.out.println("sumax2: "+sumax2);
+		System.out.println("sumax3: "+sumax3);
+		System.out.println("sumax4: "+sumax4);
+		System.out.println("sumaxy: "+sumaxy);
+		System.out.println("sumax2y: "+sumax2y);
+	
+	}//end Polynomial_quadratic_Regression
+	
+}//end class Polynomial_quadratic_Regression

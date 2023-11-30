@@ -1,0 +1,11 @@
+package hansd_on_10;
+
+public class Polynomial_quadratic_Regression {
+
+	Polynomial_quadratic_Regression(){
+	
+	
+	
+	}//end Polynomial_quadratic_Regression
+	
+}//end class Polynomial_quadratic_Regression

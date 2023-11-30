@@ -1,0 +1,18 @@
+package hansd_on_10;
+
+public class Polynomial_cubic_Regression {
+	Polynomial_cubic_Regression(double x[],double y[]){
+		System.out.println("-----Polynomial_cubic_Regression-----");
+		
+		date_set date=new date_set();
+		//calcular sumatorias
+		double sumax=0,sumay=0,sumax2=0,sumax3=0,sumax4=0,sumax5=0,sumax6=0,sumaxy=0, sumax2y=0,sumax3y=0,mediay=0;
+		
+		for(int i=0;i<=date.x.length-1;i++){
+			sumax+=date.x[i];
+			sumay+=date.y[i];
+			
+		}//end for
+		
+	}//end Polynomial_cubic_Regression
+}//end class Polynomial_cubic_Regression

@@ -1,0 +1,21 @@
+package Hansd_on_9;
+
+public class Multiple_Linear_Regression {
+
+	public Multiple_Linear_Regression(double x[][], double y[]) {
+		
+		Data_Set date = new Data_Set();
+		
+		double mediax = 0, mediay = 0;
+		for(int i=0;i<=date.y.length-1;i++) {
+			mediay += date.y[i]/date.y.length;
+			for(int j=0;j<=1;j++) {
+				mediax += date.x[i][j]/date.y.length;
+			}//end for
+		}//end for
+		
+		System.out.print("La Media de Y es: "+mediay+"\n");
+		System.out.print("La Media de X es: "+mediax+"\n");
+		
+	}//end Multiple_Linear_Regression
+}// end class Multiple_Linear_Regression

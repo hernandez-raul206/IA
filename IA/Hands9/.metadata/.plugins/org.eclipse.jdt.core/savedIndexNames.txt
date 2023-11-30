@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+Z:\escuela\9 semestre\IA\Hands-on 9\.metadata\.plugins\org.eclipse.jdt.core
+1293453974.index
+2672152370.index
+1865797976.index

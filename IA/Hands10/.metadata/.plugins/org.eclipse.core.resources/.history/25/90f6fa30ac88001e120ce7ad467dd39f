@@ -1,0 +1,47 @@
+package hansd_on_10;
+
+public class Polynomial_Linear_Regression {
+	Polynomial_Linear_Regression(double x[] , double y[]) {
+		date_set date = new date_set();
+		
+		//calculo medias
+		double mediax=0, mediay=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			mediax += date.x[i]/date.x.length;
+			mediay += date.y[i]/date.y.length;
+		}//end for
+		
+		
+		//calculo de sumatorias
+		double sumax=0,sumay=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			sumax += date.x[i]-mediax;
+			sumay += date.y[i]-mediay;
+		}//end for
+		
+		
+		double B0 =0, B1=0;
+		B1=sumax*sumay/Math.pow(sumax, 2);
+		B0= mediay-(B1*mediax);
+		
+		
+		double[] predicciones = new double[date.x.length];
+		
+		for(int i=0;i<=date.x.length-1;i++) {
+			predicciones[i]=B0+(B1*date.x[i]);
+			System.out.println("prediccion "+(i+1)+" : "+predicciones[i]);
+			
+		}//end for
+		
+		//calculo de R2
+		double syp=0,R2=0;
+		
+		for(int i=0;i<=date.x.length-1;i++) {
+			syp += date.y[i]-predicciones[i];
+		}//end for
+		
+		R2=1-Math.pow(syp, 2)/Math.pow(sumay, 2);
+		System.out.println("R2: "+R2);
+	}//end Polynomial_Linear_Regression
+
+}//end class Polynomial_Linear_Regression

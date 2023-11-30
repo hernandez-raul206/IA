@@ -1,0 +1,62 @@
+package hansd_on_10;
+
+public class Polynomial_quadratic_Regression {
+
+	Polynomial_quadratic_Regression(double x[],double y[]){
+		System.out.println("-----Polynomial_quadratic_Regression-----");
+		date_set date = new date_set();
+		
+		//calculo de sumas
+	
+		double sumax=0,sumay=0,sumax2=0,sumax3=0,sumax4=0,sumaxy=0, sumax2y=0,mediay=0;
+		for(int i=0;i<=date.x.length-1;i++) {
+			sumax+=date.x[i];
+			sumay+=date.y[i];
+			sumax2+=Math.pow(date.x[i], 2);
+			sumax3+=Math.pow(date.x[i], 3);
+			sumax4+=Math.pow(date.x[i], 4);
+			sumaxy+=date.x[i]*date.y[i];
+			sumax2y+=Math.pow((date.x[i]), 2)*date.y[i];
+			mediay+=date.y[i];
+			
+		}//end for
+		mediay/=date.y.length;
+		
+		//calcular betas
+		double determinante=0, B0=0,B1=0,B2=0;
+		
+		determinante=(sumax2*sumax2*sumax2)+(sumax*sumax*sumax4)+(date.x.length*sumax3*sumax3)-(sumax4*sumax2*date.x.length)-(sumax3*sumax*sumax2)-(sumax2*sumax3*sumax);
+		B0=(sumay*sumax2*sumax2)+(sumaxy*sumax3*date.x.length)+(sumax2y*sumax*sumax)-(sumaxy*sumax*sumax2)-(sumay*sumax3*sumax)-(sumax2y*sumax2*date.x.length);
+		B1=(sumax2*sumaxy*sumax2)+(sumay*sumax*sumax4)+(date.x.length*sumax3*sumax2y)-(sumax4*sumaxy*date.x.length)-(sumax2y*sumax*sumax2)-(sumax2*sumax3*sumay);
+		B2=(sumax2*sumax2*sumax2y)+(sumax*sumaxy*sumax4)+(sumay*sumax3*sumax3)-(sumax4*sumax2*sumay)-(sumax3*sumaxy*sumax2)-(sumax2y*sumax3*sumax);
+		
+		B0/=determinante;
+		B1/=determinante;
+		B2/=determinante;
+		
+		System.out.println("B0: " + B0);
+	    System.out.println("B1: " + B1);
+	    System.out.println("B2: " + B2);
+	     
+	    double[] Predicciones = new double[date.x.length];
+	    for(int i=0;i<=date.x.length-1;i++) {
+	    	Predicciones[i] = B0 * (Math.pow(date.x[i], 2)) + B1 * (date.x[i]) + B2;
+            //System.out.println("Prediccion "+(i + 1) + ": " + Predicciones[i]);
+	    }//end for
+	    
+	    //calcular R2
+	    double tsc=0, scr=0,R2=0;
+	    
+	    for(int i=0;i<=date.x.length-1;i++) {
+	    	tsc+=Math.pow((date.y[i]-mediay), 2);
+	    	scr+=Math.pow((date.y[i] - Predicciones[i]), 2);
+	    }//end for
+	    R2=1-(scr/tsc);
+	    System.out.println("R2: "+R2);
+	    System.out.println("Formula de prediccion: B0+B1X+B2X2");
+		double test=0,X=120;//Cambiar la X para las predicciones
+		test=(B0 * (Math.pow(X, 2))) + (B1*X) + B2;
+		System.out.println("La Prediccion usando "+X+" es: "+test);
+	}//end Polynomial_quadratic_Regression
+	
+}//end class Polynomial_quadratic_Regression
