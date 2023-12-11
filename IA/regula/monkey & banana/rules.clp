@@ -1,57 +1,56 @@
 (defrule acercar-mono-a-silla
-    ?hecho-actual <- (nextTo mono muro)
+    ?hecho-actual <- (mono muro)
     =>
     (retract ?hecho-actual)
-    (assert (nextTo mono silla) )
-    (printout t "El mono se acerca a la silla" crlf)
+    (assert (mono silla) )
+    (printout t "El mono esta hambriento y se acerca  en donde esta la silla " crlf)
 )
-
-(defrule subir-silla,
-    ?hecho-actual  <- (isOn silla suelo)
-    ?hecho-actual2 <- (nextTo mono silla)
-    ?hechoactual3 <- (nextTo silla mesa)
+(defrule llevar-silla
+    ?hecho-actual  <- (silla suelo)
+    ?hecho-actual2 <- (mono silla)
+    ?hecho-actual3 <- (silla mesa)
     =>
-    ( retract ?hecho-actual ?hecho-actual2 ?hechoactual3 )
-    ( assert (isOn silla mesa) (nextTo mono mesa) )
-    (printout t "El mono pone la silla sobre la mesa" crlf)
+    (retract ?hecho-actual ?hecho-actual2 ?hecho-actual3)
+    (assert (silla mesa) (mono mesa))
+    (printout t "El mono lleva la silla en donde esta  la mesa y sube la silla  a la mesa  " crlf)
 )
 
 
 (defrule subir-mono-a-mesa
-    ?hechoactual <- (isOn silla mesa)
-    ?hechoactual1 <- (nextTo mono mesa)
-    ?hechoactual2 <- (isOn mono suelo)
+    ?hechoactual <- (silla mesa)
+    ?hechoactual1 <- (mono mesa)
+    ?hechoactual2 <- (mono suelo)
     =>
     (retract ?hechoactual1 ?hechoactual2 )
-    (assert (isOn mono mesa))
-    (printout t "El mono sube a la mesa" crlf)
+    (assert (mono mesa))
+    (printout t "El mono sube a la mesa parado agarrandose de la silla" crlf)
 )
  
 (defrule subir-mono-a-silla
-    ?hechoactual <- (isOn silla mesa)
-    ?hechoactual1 <- (isOn mono mesa)
+    ?hechoactual <- (silla mesa)
+    ?hechoactual1 <- (mono mesa)
     =>
     (retract ?hechoactual1)
-    (assert (isOn mono silla))
-    (printout t "El mono sube a la silla" crlf)
+    (assert (mono silla))
+    (printout t "El mono sube a la silla para lograr alcanzar la banana" crlf)
 )
 
 (defrule mono-toma-la-banana
-    ?hechoactual <-  (isOn mono silla)
-    ?hechoactual1 <- (isOn banana techo)
+    ?hechoactual <-  (mono silla)
+    ?hechoactual1 <- (banana techo)
     =>
     (retract ?hechoactual1)
     (assert (el-mono-tiene-la-banana))
-    (printout t "El mono tiene la banana" crlf)
+    (printout t "El mono alcanza la banana" crlf)
 )
 
 (defrule mono-come-la-banana
-    ?hechoactual <-  (isOn mono silla)
+    ?hechoactual <-  (mono silla)
     ?hechoactual1 <- (el-mono-tiene-la-banana)
     =>
     (retract ?hechoactual1)
     (assert (el-mono-come-la-banana))
-    (printout t "El mono come la banana" crlf)
+    (printout t "El mono se  come la banana" crlf)
 )
 (defrule cambiar-estado-del-mono
     ?hechoactual <-  (el-mono-esta hambriento)
@@ -59,5 +58,5 @@
     =>
     (retract ?hechoactual ?hechoactual1)
     (assert (el-mono-esta feliz))
-    (printout t "El mono está feliz" crlf)
+    (printout t "El mono está contento" crlf)
 )
