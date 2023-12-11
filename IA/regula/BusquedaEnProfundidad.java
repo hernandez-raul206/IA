@@ -53,11 +53,11 @@ public class BusquedaEnProfundidad {
                 String nodoActual = ListC.get(0).getNombre();
 
                 if (ListC.get(0).getNombre().equals(estadoFinal)){
-                    System.out.println("********");
+                    System.out.println("-----------");
                     for(int i = 0; i < ListC.size(); i++){
                         System.out.println(ListC.get(i).getNombre());
                     }
-                    System.out.println("********");
+                    System.out.println("------------");
                 }
                 else{
                     if (nodoActual == "ny") {
